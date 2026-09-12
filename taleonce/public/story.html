@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Read a short story on TaleOnce." />
+  <title>TaleOnce</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="reader-page">
+  <div id="drawerBackdrop" class="drawer-backdrop" hidden></div>
+  <aside id="drawer" class="drawer" aria-hidden="true">
+    <div class="drawer-head">
+      <a class="brand brand-small" href="/">TaleOnce</a>
+      <button id="drawerClose" class="icon-button" aria-label="Close menu">×</button>
+    </div>
+    <div class="drawer-block">
+      <div class="drawer-title">Contents</div>
+      <nav id="toc" class="toc"></nav>
+    </div>
+    <div class="drawer-block">
+      <div class="drawer-title">Browse</div>
+      <nav class="browse-links">
+        <a href="/#romance">Romance</a>
+        <a href="/#werewolf">Werewolf</a>
+        <a href="/#vampire">Vampire</a>
+        <a href="/#urban">Urban</a>
+        <a href="/#fantasy">Fantasy</a>
+      </nav>
+    </div>
+    <a class="back-home" href="/">← Back to home</a>
+  </aside>
+
+  <header class="reader-toolbar">
+    <button id="menuButton" class="icon-button menu-button" aria-label="Open contents" aria-expanded="false">☰</button>
+    <a class="brand brand-small" href="/">TaleOnce</a>
+    <div class="reader-actions">
+      <button id="fontButton" class="text-button" aria-label="Change font size">Aa</button>
+      <button id="themeButton" class="icon-button" aria-label="Toggle dark mode">☾</button>
+    </div>
+  </header>
+
+  <main class="reader-shell">
+    <article id="storyArticle" class="story-article"></article>
+
+    <section class="engagement" aria-label="Story rating and comments">
+      <div class="rating-panel">
+        <h2>How would you rate this story?</h2>
+        <div id="stars" class="stars" aria-label="Rate from 1 to 5 stars"></div>
+        <div id="ratingSummary" class="rating-summary">No ratings yet</div>
+        <div id="ratingMessage" class="form-message" aria-live="polite"></div>
+      </div>
+
+      <div class="comments-panel">
+        <h2>Comments</h2>
+        <div id="commentsList" class="comments-list"></div>
+        <form id="commentForm" class="comment-form">
+          <label>
+            <span>Name</span>
+            <input id="commentName" maxlength="40" autocomplete="name" placeholder="Your name" required />
+          </label>
+          <label>
+            <span>Comment</span>
+            <textarea id="commentText" maxlength="600" rows="4" placeholder="Write a comment..." required></textarea>
+          </label>
+          <input id="websiteField" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <button class="post-button" type="submit">Post comment</button>
+          <div id="commentMessage" class="form-message" aria-live="polite"></div>
+        </form>
+      </div>
+
+      <a id="backCategory" class="category-back" href="/">← Back</a>
+    </section>
+  </main>
+
+  <script src="/data/stories.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
