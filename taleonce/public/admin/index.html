@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Story Editor — FreeTaleOnce</title>
+  <link rel="stylesheet" href="/admin/admin.css" />
+</head>
+<body>
+  <main class="admin-shell">
+    <header>
+      <a href="/" class="brand">FreeTaleOnce</a>
+      <h1>Story Editor</h1>
+      <p>Create a story JSON file without editing code by hand.</p>
+    </header>
+
+    <form id="storyForm">
+      <div class="grid">
+        <label>
+          <span>Title</span>
+          <input id="title" required placeholder="The Contract Wife" />
+        </label>
+
+        <label>
+          <span>Category</span>
+          <select id="category">
+            <option>Romance</option>
+            <option>Werewolf</option>
+            <option>Vampire</option>
+            <option>Urban</option>
+            <option>Fantasy</option>
+          </select>
+        </label>
+      </div>
+
+      <label>
+        <span>Excerpt</span>
+        <textarea id="excerpt" rows="3" required placeholder="A short homepage description..."></textarea>
+      </label>
+
+      <div class="grid">
+        <label>
+          <span>Tags</span>
+          <input id="tags" placeholder="Romance, Slow Burn, Contract Marriage" />
+        </label>
+
+        <label>
+          <span>Cover path</span>
+          <input id="cover" value="/assets/covers/" required />
+        </label>
+      </div>
+
+      <section class="sections">
+        <div class="section-heading">
+          <h2>Story sections</h2>
+          <button id="addSection" type="button" class="secondary">+ Add section</button>
+        </div>
+        <div id="sections"></div>
+      </section>
+
+      <div class="actions">
+        <button type="submit">Create story JSON</button>
+        <span id="status"></span>
+      </div>
+    </form>
+
+    <aside class="help">
+      <strong>After downloading:</strong>
+      <code>python3 taleonce/tools/add_story.py ~/Downloads/your-story.json</code>
+      <span>If your repo no longer has the outer taleonce/ folder, use <code>python3 tools/add_story.py ...</code>.</span>
+    </aside>
+  </main>
+
+  <template id="sectionTemplate">
+    <div class="story-section">
+      <div class="section-top">
+        <input class="section-title" required placeholder="Section title" />
+        <button type="button" class="remove secondary">Remove</button>
+      </div>
+      <textarea class="section-body" rows="8" required placeholder="Paste the section here.
+
+Separate paragraphs with a blank line."></textarea>
+    </div>
+  </template>
+
+  <script src="/admin/admin.js"></script>
+</body>
+</html>

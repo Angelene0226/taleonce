@@ -1,0 +1,38 @@
+{
+  "slug": "the-last-train-home",
+  "category": "Urban",
+  "title": "The Last Train Home",
+  "excerpt": "Two strangers miss the final train and spend one night walking across a city that never slows down.",
+  "cover": "/assets/covers/last-train.svg",
+  "tags": [
+    "Urban",
+    "Contemporary",
+    "Strangers to Lovers"
+  ],
+  "wordCount": 4380,
+  "sections": [
+    {
+      "title": "11:58 PM",
+      "paragraphs": [
+        "The train doors closed while both of them were still running.",
+        "Maya blamed the broken ticket machine. Theo blamed Maya for arguing with it.",
+        "Neither had enough money left for a taxi across the city."
+      ]
+    },
+    {
+      "title": "2:16 AM",
+      "paragraphs": [
+        "They found noodles beneath a fluorescent sign, watched a bakery begin its morning shift, and told each other things they had never told people who knew their surnames.",
+        "A city feels different when there is nowhere left to go."
+      ]
+    },
+    {
+      "title": "5:41 AM",
+      "paragraphs": [
+        "The first train arrived with the sunrise.",
+        "They stood on opposite platforms, each holding the other's phone number.",
+        "For once, neither of them missed the train."
+      ]
+    }
+  ]
+}

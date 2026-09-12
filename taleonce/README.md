@@ -56,3 +56,27 @@ The Functions in `functions/api/` will then serve `/api/rating` and `/api/commen
 ## Notes before public launch
 
 The comment system is intentionally minimal. Before attracting meaningful traffic, consider adding Cloudflare Turnstile and a moderation flow. You can hide a comment manually by setting `approved = 0` in D1.
+
+## Story management
+
+Stories now live as individual JSON files:
+
+```text
+public/stories/
+├── index.json
+├── the-contract-wife.json
+├── ...
+```
+
+Open `/admin/` to create a story JSON file in the browser.
+
+After downloading the JSON file:
+
+```bash
+python3 tools/add_story.py ~/Downloads/your-story.json
+git add .
+git commit -m "Add story"
+git push
+```
+
+Cloudflare Pages will redeploy automatically after the push.

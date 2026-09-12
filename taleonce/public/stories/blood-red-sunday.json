@@ -1,0 +1,39 @@
+{
+  "slug": "blood-red-sunday",
+  "category": "Vampire",
+  "title": "Blood Red Sunday",
+  "excerpt": "A human doctor is summoned to save a patient whose heart stopped a century ago.",
+  "cover": "/assets/covers/red-sunday.svg",
+  "tags": [
+    "Vampire",
+    "Forbidden Love",
+    "Mystery"
+  ],
+  "wordCount": 7010,
+  "sections": [
+    {
+      "title": "The Patient",
+      "paragraphs": [
+        "Dr. Lena Ortiz knew the patient was impossible before she touched him.",
+        "No pulse. No breathing. Eyes open and furious.",
+        "'You were recommended,' the woman beside the bed said. 'For discretion.'"
+      ]
+    },
+    {
+      "title": "The Diagnosis",
+      "paragraphs": [
+        "The illness was not death. It was something older, moving through blood that should not have moved at all.",
+        "Lena stayed because leaving would not make the impossible less real.",
+        "By morning, the patient knew her name and she knew his secret."
+      ]
+    },
+    {
+      "title": "Sunday",
+      "paragraphs": [
+        "The cure required sunlight.",
+        "He laughed when she told him, then stopped when he realized she was serious.",
+        "At dawn on Sunday, they stood together behind a curtain and decided exactly how much light a second life was worth."
+      ]
+    }
+  ]
+}

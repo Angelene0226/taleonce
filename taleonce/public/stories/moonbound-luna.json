@@ -1,0 +1,40 @@
+{
+  "slug": "moonbound-luna",
+  "category": "Werewolf",
+  "title": "Moonbound Luna",
+  "excerpt": "A rogue with no pack discovers the moon has chosen her for the one role she never wanted.",
+  "cover": "/assets/covers/moonbound-luna.svg",
+  "tags": [
+    "Werewolf",
+    "Luna",
+    "Rogue",
+    "Fated Mate"
+  ],
+  "wordCount": 6380,
+  "sections": [
+    {
+      "title": "Rogue",
+      "paragraphs": [
+        "Nessa had survived three years without a pack by trusting no one who carried the scent of pine and smoke.",
+        "Then the full moon marked her wrist with a crescent of silver.",
+        "Every wolf in the valley knew what the mark meant before she did."
+      ]
+    },
+    {
+      "title": "The Choosing",
+      "paragraphs": [
+        "The Alpha did not kneel when he found her, but everyone else did.",
+        "Nessa hated him for the fear in their eyes more than for the title he offered her.",
+        "A Luna, she learned, was not a queen. She was a promise the pack expected a woman to keep."
+      ]
+    },
+    {
+      "title": "A Different Pack",
+      "paragraphs": [
+        "She accepted on one condition: no one would ever kneel to her again.",
+        "The elders called it disrespect. The youngest wolves called it hope.",
+        "By spring, the valley belonged to a different kind of pack."
+      ]
+    }
+  ]
+}
