@@ -1,12 +1,68 @@
 [
-  "the-contract-wife.json",
-  "a-letter-after-midnight.json",
-  "the-alphas-last-promise.json",
-  "moonbound-luna.json",
-  "the-vampire-at-table-seven.json",
-  "blood-red-sunday.json",
-  "the-man-on-floor-forty-nine.json",
-  "the-last-train-home.json",
-  "the-girl-who-borrowed-magic.json",
-  "the-dragon-who-collected-days.json"
+  {
+    "slug": "too-late-to-love-me",
+    "category": "Romance",
+    "title": "Too Late to Love Me",
+    "excerpt": "After years of being overlooked by her husband, Claire discovers that leaving him may be the only way to reclaim her life.",
+    "cover": "/assets/covers/too-late-to-love-me.png",
+    "tags": [
+      "Romance",
+      "Starting Over",
+      "Royal Romance",
+      "Complete"
+    ],
+    "wordCount": 30519
+  },
+  {
+    "slug": "the-winter-boundary",
+    "category": "Werewolf",
+    "title": "The Winter Boundary",
+    "excerpt": "When the pack border moves overnight, a cartographer must uncover the lie that left families outside the ward for eleven winters.",
+    "cover": "/assets/covers/the-winter-boundary.png",
+    "tags": [
+      "Werewolf",
+      "Family Secret",
+      "Found Family"
+    ],
+    "wordCount": 5022
+  },
+  {
+    "slug": "the-last-name-on-the-register",
+    "category": "Vampire",
+    "title": "The Last Name on the Register",
+    "excerpt": "A night archivist finds names being used after death and one living woman marked for midnight. She has until dawn to expose the fraud.",
+    "cover": "/assets/covers/the-last-name-on-the-register.png",
+    "tags": [
+      "Vampire",
+      "Mystery",
+      "Consent"
+    ],
+    "wordCount": 5014
+  },
+  {
+    "slug": "the-apartment-above-the-laundromat",
+    "category": "Contemporary",
+    "title": "The Apartment Above the Laundromat",
+    "excerpt": "After a flood closes her mother’s shop, June follows customer messages and city records to recover more than the lost clothes.",
+    "cover": "/assets/covers/the-apartment-above-the-laundromat.png",
+    "tags": [
+      "Contemporary",
+      "Family",
+      "Community"
+    ],
+    "wordCount": 5003
+  },
+  {
+    "slug": "the-map-of-unmade-roads",
+    "category": "Fantasy",
+    "title": "The Map of Unmade Roads",
+    "excerpt": "An apprentice can draw a road that lasts one day, but every shortcut makes an existing path disappear.",
+    "cover": "/assets/covers/the-map-of-unmade-roads.png",
+    "tags": [
+      "Fantasy",
+      "Magic",
+      "Adventure"
+    ],
+    "wordCount": 5005
+  }
 ]

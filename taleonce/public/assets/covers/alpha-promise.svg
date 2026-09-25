@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900">
-<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#27332d"/><stop offset="1" stop-color="#a9b7aa"/></linearGradient></defs>
-<rect width="600" height="900" fill="url(#g)"/>
-<circle cx="470" cy="150" r="120" fill="#fff" opacity=".08"/><circle cx="115" cy="760" r="170" fill="#fff" opacity=".06"/>
-<text x="50%" y="18%" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" letter-spacing="8" fill="#fff" opacity=".78">FREETALEONCE</text>
-<text x="50%" y="48%" text-anchor="middle" font-family="Georgia,serif" font-size="29" font-weight="700" fill="#fff">THE ALPHA'S LAST</text><text x="50%" y="56%" text-anchor="middle" font-family="Georgia,serif" font-size="29" font-weight="700" fill="#fff">PROMISE</text>
-<line x1="210" y1="72%" x2="390" y2="72%" stroke="#fff" opacity=".55"/>
-<text x="50%" y="78%" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" letter-spacing="5" fill="#fff" opacity=".82">SHORT FICTION</text>
-</svg>

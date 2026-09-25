@@ -1,0 +1,9 @@
+.preview-banner { display:flex; align-items:center; flex-wrap:wrap; gap:8px 18px; padding:10px 22px; background:#342630; color:#fff; font:12px/1.5 Arial,sans-serif; }
+.preview-banner strong { letter-spacing:.04em; }
+.preview-banner span { opacity:.8; }
+.preview-banner a { margin-left:auto; text-decoration:underline; }
+.preview-omission { margin:3em 0 0; padding:16px; border:1px dashed var(--line); color:var(--muted); font:14px/1.5 Arial,sans-serif; text-align:center; }
+.preview-comment-box { margin-top:28px; padding:14px; border:1px solid var(--line); border-radius:6px; color:var(--muted); font:13px/2 Arial,sans-serif; }
+.preview-comment-box span { display:block; border-top:1px solid var(--line); margin-top:12px; padding-top:12px; }
+.preview-banner + .reader-toolbar { top:0; }
+@media(max-width:520px){.preview-banner a { margin-left:0; }}

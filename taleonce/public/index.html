@@ -3,16 +3,41 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="FreeTaleOnce — short stories in romance, werewolf, vampire, urban, and fantasy." />
-  <title>FreeTaleOnce — Short Stories</title>
+  <meta name="description" content="FreeTaleOnce — fiction in romance, werewolf, vampire, contemporary, and fantasy." />
+  <title>FreeTaleOnce — Stories to Stay With</title>
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body class="home-page">
+  <a class="skip-link" href="#library">Skip to stories</a>
   <header class="home-header">
     <a class="brand" href="/">FreeTaleOnce</a>
+    <nav class="home-nav" aria-label="Story categories">
+      <a href="#romance">Romance</a>
+      <a href="#werewolf">Werewolf</a>
+      <a href="#vampire">Vampire</a>
+      <a href="#contemporary">Contemporary</a>
+      <a href="#fantasy">Fantasy</a>
+    </nav>
   </header>
 
-  <main id="library" class="library" aria-live="polite"></main>
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">FreeTaleOnce <span aria-hidden="true">/</span> Original fiction</p>
+        <h1 id="hero-title">Stories that<br /><em>stay with you.</em></h1>
+        <div class="hero-bottom">
+          <p>Five complete stories. Five different worlds. Find the one that stays on your mind after the final page.</p>
+          <a class="hero-link" href="#library">Explore the collection <span aria-hidden="true">↘</span></a>
+        </div>
+      </div>
+      <div class="hero-side" aria-label="Collection details">
+        <div class="hero-side-top"><span>The Collection</span><span>No. 01 / 05</span></div>
+        <div class="hero-monogram" aria-hidden="true">T<span>O</span></div>
+        <div class="hero-side-bottom"><span>Read freely</span><span>Remember longer</span></div>
+      </div>
+    </section>
+    <div id="library" class="library" aria-live="polite"><p>Loading stories…</p></div>
+  </main>
 
   <footer class="site-footer">© <span id="year"></span> FreeTaleOnce</footer>
   <script src="/app.js"></script>

@@ -1,10 +1,10 @@
 # TaleOnce
 
-A minimal short-fiction site designed for Cloudflare Pages.
+A complete fiction site designed for Cloudflare Pages. The public library contains one finished English work in each of five categories.
 
 ## Product structure
 
-- Home page: categories only (Romance, Werewolf, Vampire, Urban, Fantasy)
+- Home page: five primary categories (Romance, Werewolf, Vampire, Contemporary, Fantasy)
 - Cards: cover + title + short description
 - Click a card to read immediately
 - Reader: menu/contents drawer, title, tags, word count, estimated reading time, font size and dark mode
@@ -13,7 +13,7 @@ A minimal short-fiction site designed for Cloudflare Pages.
 
 ## Add or edit stories
 
-Edit `data/stories.js`.
+Stories are individual JSON files under `public/stories/`; `public/stories/index.json` contains the lightweight metadata used on the home page. The reader loads only the selected story's full text.
 
 Each story has:
 
@@ -23,10 +23,28 @@ Each story has:
 - `excerpt`
 - `cover`
 - `tags`
-- `wordCount`
+- `wordCount` (calculated from the prose by `tools/add_story.py`)
 - `sections` with section titles and paragraphs
 
-Replace the SVG files in `assets/covers/` with your real covers when ready.
+Illustrated PNG covers are stored in `public/assets/covers/`. The site overlays each title in HTML so cover text stays crisp and editable.
+
+Each story has one primary category. Use tags for cross-genre themes such as romance in a werewolf story. Romance is for relationship-led stories without a stronger supernatural setting; Werewolf and Vampire are setting-specific; Contemporary is present-day fiction without a supernatural premise; Fantasy covers other magical settings.
+
+## Current library
+
+| Category | Story | English words |
+| --- | --- | ---: |
+| Romance | *Too Late to Love Me* (author's full manuscript) | 30,519 |
+| Werewolf | *The Winter Boundary* | 5,022 |
+| Vampire | *The Last Name on the Register* | 5,014 |
+| Contemporary | *The Apartment Above the Laundromat* | 5,003 |
+| Fantasy | *The Map of Unmade Roads* | 5,005 |
+
+English and Chinese lengths do not convert exactly. The four new stories are complete, each with its own ending and a reading volume intended to approximate a Chinese 8,000–12,000-character short work.
+
+## Review the layout locally
+
+Open `preview/index.html` in a browser to inspect the home page, then click any cover to see its reader page. The preview uses the site's styles and covers but includes only the opening paragraphs. It sits outside `public/`, so Cloudflare will not publish it. Regenerate it after design changes with `python3 tools/build_preview.py`.
 
 ## Deploy to Cloudflare Pages
 
@@ -35,7 +53,7 @@ Replace the SVG files in `assets/covers/` with your real covers when ready.
 3. Cloudflare dashboard → Workers & Pages → Create application → Pages → Connect to Git.
 4. Choose the `taleonce` repository.
 5. Production branch: `main`.
-6. This project is plain static HTML. Set **Build command** to `exit 0` and **Build output directory** to `public`. Keep the repository root as the root directory.
+6. In the current Git repository layout, set **Root directory** to `taleonce`, **Build command** to `exit 0`, and **Build output directory** to `public`. This also places `functions/` beside `public/` for Pages Functions.
 7. Choose `taleonce` as the Pages project name if available. Cloudflare will give the project a `*.pages.dev` address; if the name is available, it will be `taleonce.pages.dev`.
 
 ## Enable ratings and comments with D1
@@ -64,8 +82,11 @@ Stories now live as individual JSON files:
 ```text
 public/stories/
 ├── index.json
-├── the-contract-wife.json
-├── ...
+├── too-late-to-love-me.json
+├── the-winter-boundary.json
+├── the-last-name-on-the-register.json
+├── the-apartment-above-the-laundromat.json
+└── the-map-of-unmade-roads.json
 ```
 
 Open `/admin/` to create a story JSON file in the browser.
@@ -73,7 +94,9 @@ Open `/admin/` to create a story JSON file in the browser.
 After downloading the JSON file:
 
 ```bash
+cd taleonce
 python3 tools/add_story.py ~/Downloads/your-story.json
+python3 tools/validate_site.py
 git add .
 git commit -m "Add story"
 git push

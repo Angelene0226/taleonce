@@ -1,5 +1,11 @@
 (() => {
-  const categories = ["Romance", "Werewolf", "Vampire", "Urban", "Fantasy"];
+  const categories = [
+    { name: "Romance", description: "Love and relationships drive the central conflict." },
+    { name: "Werewolf", description: "Shifters, packs, and bonds shape the story." },
+    { name: "Vampire", description: "Immortality, hunger, and night-bound worlds." },
+    { name: "Contemporary", description: "Present-day life without a supernatural premise." },
+    { name: "Fantasy", description: "Magic and invented worlds beyond shifter or vampire fiction." }
+  ];
   let stories = [];
 
   const slugify = (value) =>
@@ -21,21 +27,16 @@
     const indexResponse = await fetch("/stories/index.json", { cache: "no-cache" });
     if (!indexResponse.ok) throw new Error("Could not load story index.");
 
-    const files = await indexResponse.json();
-    stories = await Promise.all(
-      files.map(async (file) => {
-        const response = await fetch(`/stories/${encodeURIComponent(file)}`, { cache: "no-cache" });
-        if (!response.ok) throw new Error(`Could not load ${file}`);
-        return response.json();
-      })
-    );
+    stories = await indexResponse.json();
+    if (!Array.isArray(stories)) throw new Error("Invalid story index.");
   }
 
   function initHome() {
     const library = document.querySelector("#library");
     if (!library) return;
+    library.replaceChildren();
 
-    categories.forEach((category) => {
+    categories.forEach(({ name: category, description }, categoryIndex) => {
       const items = stories.filter((story) => story.category === category);
       if (!items.length) return;
 
@@ -43,15 +44,23 @@
       section.className = "category-section";
       section.id = slugify(category);
       section.innerHTML = `
-        <div class="category-heading"><h2>${escapeHTML(category)}</h2></div>
+        <div class="category-heading"><span class="category-number">0${categoryIndex + 1}</span><h2>${escapeHTML(category)}</h2></div>
+        <p class="category-description">${escapeHTML(description)}</p>
         <div class="story-grid">
           ${items.map((story) => `
             <article class="story-card">
               <a class="cover-link" href="${storyHref(story)}" aria-label="Read ${escapeHTML(story.title)}">
                 <img class="story-cover" src="${escapeHTML(story.cover)}" alt="Cover of ${escapeHTML(story.title)}" loading="lazy" />
+                <span class="cover-imprint">FreeTaleOnce Original</span>
+                <span class="cover-title">${escapeHTML(story.title)}</span>
               </a>
-              <h3><a href="${storyHref(story)}">${escapeHTML(story.title)}</a></h3>
-              <p>${escapeHTML(story.excerpt)}</p>
+              <div class="story-card-copy">
+                <div class="card-kicker">${escapeHTML(category)} <span aria-hidden="true">/</span> Complete story</div>
+                <h3><a href="${storyHref(story)}">${escapeHTML(story.title)}</a></h3>
+                <p>${escapeHTML(story.excerpt)}</p>
+                <div class="card-meta">${Number(story.wordCount).toLocaleString()} words <span aria-hidden="true">·</span> ${Math.ceil(story.wordCount / 230)} min read</div>
+                <a class="card-read" href="${storyHref(story)}">Read the story <span aria-hidden="true">→</span></a>
+              </div>
             </article>
           `).join("")}
         </div>`;
@@ -62,36 +71,44 @@
     if (year) year.textContent = new Date().getFullYear();
   }
 
-  function currentStory() {
+  async function currentStory() {
     const params = new URLSearchParams(location.search);
-    const slug = params.get("story") || stories[0]?.slug;
-    return stories.find((item) => item.slug === slug);
+    const slug = params.get("story");
+    if (!slug || !stories.some((item) => item.slug === slug)) return null;
+    const response = await fetch(`/stories/${encodeURIComponent(slug)}.json`);
+    if (!response.ok) throw new Error("Could not load story.");
+    return response.json();
   }
 
-  function initReader() {
+  async function initReader() {
     const article = document.querySelector("#storyArticle");
     if (!article) return;
 
-    const story = currentStory();
+    const story = await currentStory();
     if (!story) {
       article.innerHTML = `<p>Story not found. <a href="/">Return home</a>.</p>`;
       return;
     }
 
-    document.title = `${story.title} — FreeFreeTaleOnce`;
+    document.title = `${story.title} — FreeTaleOnce`;
     const description = document.querySelector('meta[name="description"]');
     if (description) description.content = story.excerpt;
 
-    const wordCount = Number(story.wordCount) || countStoryWords(story);
-    const readMinutes = Math.max(1, Math.round(wordCount / 230));
+    const wordCount = countStoryWords(story);
+    const readMinutes = Math.max(1, Math.ceil(wordCount / 230));
 
     article.innerHTML = `
       <header class="story-head">
-        <h1>${escapeHTML(story.title)}</h1>
-        <div class="story-tags">
-          ${(story.tags || []).map((tag) => `<span class="story-tag">${escapeHTML(tag)}</span>`).join("")}
+        <img class="story-head-cover" src="${escapeHTML(story.cover)}" alt="Cover of ${escapeHTML(story.title)}" />
+        <div class="story-head-copy">
+          <div class="story-head-kicker">${escapeHTML(story.category)} <span aria-hidden="true">/</span> FreeTaleOnce Original</div>
+          <h1>${escapeHTML(story.title)}</h1>
+          <p class="story-deck">${escapeHTML(story.excerpt)}</p>
+          <div class="story-tags">
+            ${(story.tags || []).map((tag) => `<span class="story-tag">${escapeHTML(tag)}</span>`).join("")}
+          </div>
+          <div class="story-meta">${wordCount.toLocaleString()} words · ${readMinutes} min read</div>
         </div>
-        <div class="story-meta">${wordCount.toLocaleString()} words · ${readMinutes} min read</div>
       </header>
       <div class="story-body">
         ${(story.sections || []).map((section, index) => `
@@ -327,7 +344,11 @@
         const data = await response.json();
         renderComments(data.comments || []);
       } catch {
-        renderComments([]);
+        list.replaceChildren();
+        const unavailable = document.createElement("div");
+        unavailable.className = "empty-comments";
+        unavailable.textContent = "Comments are unavailable right now.";
+        list.appendChild(unavailable);
       }
     }
 
@@ -370,7 +391,7 @@
     try {
       await loadStories();
       initHome();
-      initReader();
+      await initReader();
     } catch (error) {
       console.error(error);
       const library = document.querySelector("#library");
